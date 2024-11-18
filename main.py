@@ -1,12 +1,26 @@
 from quote_manager import load_quotes, random_quote, add_quote
 
+def menu():
+    print("1. Show all quotes")
+    print("2. Add a new quote")
+    print("3. Choose a random quote")
+    print("4. Exit")
+
 def main():
     q = load_quotes()
-    print(f'random quote: {random_quote(q)}', f'total quotes: {len(q)}')
-    a = input('add a quote? print "y" or "n" \n')
-    if a == 'y':
-        add_quote(input('add a quote: \n'))
-
+    while True:
+        menu()
+        choice = input("Choose an option: ")
+        if choice == "1":
+            for quote in q:
+                print(quote)
+        elif choice == "2":
+            quote = input("Enter a quote: ")
+            add_quote('\n' + quote)
+        elif choice == "3":
+            print(random_quote(q))
+        elif choice == "4":
+            break
 
 if __name__ == '__main__':
     main()
