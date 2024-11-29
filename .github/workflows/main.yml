@@ -32,4 +32,4 @@ jobs:
 
     - name: Run tests
       run: |
-        pytest person1/tests/
+        pytest
