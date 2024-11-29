@@ -1,8 +1,8 @@
 import pytest
 import builtins
 
-from person1.quote_manager import load_quotes,add_quote
-from person1.main import main
+from ..quote_manager import load_quotes,add_quote
+from ..main import main
 
 
 def test_load_quotes_file_not_found(tmp_path):

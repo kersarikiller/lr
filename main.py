@@ -1,4 +1,4 @@
-from person1.quote_manager import load_quotes, random_quote, add_quote
+from .quote_manager import load_quotes, random_quote, add_quote
 
 def menu():
     print("1. Show all quotes")
