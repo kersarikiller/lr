@@ -4,6 +4,7 @@ import builtins
 from person1.quote_manager import load_quotes,add_quote
 from person1.main import main
 
+
 def test_load_quotes_file_not_found(tmp_path):
     """Тестирует, выбрасывается ли ошибка, если файл не найден."""
     # Создаём путь к несуществующему файлу
@@ -24,10 +25,10 @@ def test_add_quote(mocker):
 
 def test_main_menu_invalid_input(mocker):
     # Мокаем ввод пользователя
-    mocker.patch("builtins.input", side_effect=["0", "5", "abc", "4"])  # Некорректные значения, затем выход
-    mocker.patch("builtins.print")  # Чтобы не выводить на экран
+    mock_input = mocker.patch("builtins.input", side_effect=["0", "5", "abc", "4"])  # Некорректные значения, затем выход
+    mock_print = mocker.patch("builtins.print")  # Чтобы не выводить на экран
 
     main()
 
     # Проверяем, что сообщение об ошибке было выведено
-    builtins.print.assert_any_call("Invalid option! Please choose a number between 1 and 4.")
+    mock_print.assert_any_call("Invalid option! Please choose a number between 1 and 4.")

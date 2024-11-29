@@ -11,7 +11,10 @@ def main():
     while True:
         menu()
         choice = input("Choose an option: ")
-        if choice == "1":
+        if not choice.isdigit() or int(choice) not in range(1, 5):
+            print("Invalid option! Please choose a number between 1 and 4.")
+            continue
+        elif choice == "1":
             for quote in q:
                 print(quote)
         elif choice == "2":
@@ -21,6 +24,7 @@ def main():
             print(random_quote(q))
         elif choice == "4":
             break
+
 
 if __name__ == '__main__':
     main()
