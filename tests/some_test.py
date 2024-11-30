@@ -5,13 +5,14 @@ from ..quote_manager import load_quotes,add_quote
 from ..main import main
 
 
-def test_load_quotes_file_not_found(tmp_path):
-    """Тестирует, выбрасывается ли ошибка, если файл не найден."""
-    # Создаём путь к несуществующему файлу
-    non_existent_file = tmp_path / "non_existent_quotes.txt"
+def test_load_quotes(mocker):
+    mock_file_data = "Quote 1\nQuote 2\nQuote 3\n"
+    mock_open = mocker.patch("builtins.open", mocker.mock_open(read_data=mock_file_data))
+    quotes = load_quotes()
 
-    # Убедитесь, что файла точно нет
-    assert not non_existent_file.exists()
+    assert quotes == ["Quote 1", "Quote 2", "Quote 3"]
+
+    mock_open.assert_called_once_with("quotes.txt", "r", encoding="utf-8")
 
 
 def test_add_quote(mocker):
