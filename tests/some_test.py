@@ -1,6 +1,3 @@
-import pytest
-import builtins
-
 from ..quote_manager import load_quotes,add_quote
 from ..main import main
 
